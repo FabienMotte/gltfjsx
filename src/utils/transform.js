@@ -24,7 +24,7 @@ async function transform(file, output, config = {}) {
     // Remove duplicate vertex or texture data, if any.
     dedup(),
     // Remove unused nodes, textures, or other data.
-    prune(),
+    prune({ keepLeaves: config.keepgroups }),
     // Resize and convert textures (using webp and sharp)
     textureCompress({ targetFormat: 'webp', encoder: sharp, resize: [resolution, resolution] }),
     // Add Draco compression.
